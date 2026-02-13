@@ -15,8 +15,8 @@ This interim report presents the foundational work for analyzing how major polit
 ## 1. Analysis Workflow
 
 ### 1.1 Data Acquisition and Preparation
-1. Load historical Brent oil price data (May 1987 - September 2022)
-2. Convert date formats and handle data quality issues
+1. Load historical Brent oil price data (May 1987 - November 2022)
+2. Handle mixed date formats and data quality issues
 3. Compute derived features (log returns, rolling statistics)
 4. Merge with major events dataset
 
@@ -75,38 +75,119 @@ We have compiled 18 major events that potentially impacted Brent oil prices betw
 ## 3. Initial EDA Findings
 
 ### 3.1 Data Overview
-- **Time Period**: May 20, 1987 to September 30, 2022
-- **Total Observations**: ~9,000 daily records
-- **Price Range**: Approximately $10 to $147 USD per barrel
 
-### 3.2 Key Statistical Properties
+| Metric | Value |
+|--------|-------|
+| **Total Observations** | 9,011 daily records |
+| **Date Range** | May 20, 1987 to November 14, 2022 |
+| **Trading Days** | 12,962 calendar days |
+| **Missing Values** | 0 |
 
-#### Stationarity
-- **Raw Prices**: Non-stationary (ADF test p-value > 0.05)
-- **Log Returns**: Stationary (ADF test p-value < 0.05)
-- **Implication**: Change point models should be applied to log returns or prices in specific windows
+### 3.2 Price Statistics
 
-#### Volatility Patterns
-- Clear evidence of volatility clustering (ARCH effects)
-- Squared returns show significant autocorrelation
-- Periods of high volatility correspond to major events
+| Statistic | Value |
+|-----------|-------|
+| Mean Price | $48.42 |
+| Median Price | $38.57 |
+| Standard Deviation | $32.86 |
+| Minimum Price | $9.10 (December 10, 1998) |
+| Maximum Price | $143.95 (July 3, 2008) |
+| Price Range | $134.85 |
 
-#### Distribution Characteristics
-- Log returns exhibit leptokurtosis (fat tails)
-- Negative skewness indicates larger negative shocks
-- Non-normal distribution suggests need for robust methods
+**Price Percentiles:**
+- 10th percentile: $16.25
+- 25th percentile: $19.05
+- 50th percentile (Median): $38.57
+- 75th percentile: $70.09
+- 90th percentile: $106.51
+- 95th percentile: $111.91
+- 99th percentile: $124.12
 
-### 3.3 Visual Observations
-- Multiple apparent structural breaks throughout the series
-- Significant price spikes during conflict periods
-- Sharp declines during economic crises
-- OPEC policy decisions create distinct market regimes
+### 3.3 Log Returns Analysis
+
+| Statistic | Value |
+|-----------|-------|
+| Mean Daily Log Return | 0.0179% |
+| Standard Deviation | 2.5532% |
+| Annualized Volatility | 40.53% |
+| Skewness | -1.7444 |
+| Kurtosis | 65.9047 |
+| Minimum Daily Return | -64.37% |
+| Maximum Daily Return | +41.20% |
+
+**Key Observations:**
+- **Negative Skewness**: Large negative price shocks are more common than positive ones
+- **Extreme Kurtosis**: Fat tails indicate much higher probability of extreme events than a normal distribution would predict
+- **High Volatility**: Annualized volatility of 40.53% indicates substantial price uncertainty
+
+### 3.4 Stationarity Test Results
+
+#### Raw Prices (Non-Stationary)
+| Test | Statistic | P-Value | Conclusion |
+|------|-----------|---------|------------|
+| ADF | -1.9939 | 0.2893 | Non-stationary |
+| KPSS | 9.5588 | 0.0100 | Non-stationary |
+
+#### Log Returns (Stationary)
+| Test | Statistic | P-Value | Conclusion |
+|------|-----------|---------|------------|
+| ADF | -16.4271 | 0.0000 | Stationary |
+| KPSS | 0.0343 | 0.1000 | Stationary |
+
+**Implication**: Change point models should be applied to log returns or prices within specific time windows for valid statistical inference.
+
+### 3.5 Volatility by Decade
+
+| Decade | Annualized Volatility |
+|--------|----------------------|
+| 1980s | 31.05% |
+| 1990s | 37.99% |
+| 2000s | 39.90% |
+| 2010s | 30.31% |
+| 2020s | **75.23%** |
+
+**Key Finding**: The 2020s show dramatically higher volatility (75.23%) due to the COVID-19 pandemic and subsequent market disruptions.
+
+### 3.6 Extreme Price Movements
+
+**Largest Daily Gains:**
+| Date | Return | Price |
+|------|--------|-------|
+| April 22, 2020 | +41.20% | $13.77 |
+| April 2, 2020 | +30.16% | $20.24 |
+| May 5, 2020 | +22.16% | $25.46 |
+| April 3, 2020 | +18.40% | $24.33 |
+| January 2, 2009 | +18.13% | $42.94 |
+
+**Largest Daily Losses:**
+| Date | Return | Price |
+|------|--------|-------|
+| April 21, 2020 | **-64.37%** | $9.12 |
+| January 17, 1991 | -36.12% | $21.10 |
+| March 9, 2020 | -25.52% | $35.33 |
+| April 1, 2020 | -24.83% | $14.97 |
+| April 9, 2020 | -22.05% | $20.23 |
+
+**Key Finding**: The COVID-19 pandemic period (March-April 2020) dominates both extreme gains and losses, with the single largest loss of -64.37% occurring on April 21, 2020.
+
+### 3.7 Visual Observations
+
+Based on exploratory analysis:
+
+1. **Multiple Structural Breaks**: Clear regime changes visible in 1990 (Gulf War), 2008 (Financial Crisis), 2014 (OPEC price war), and 2020 (COVID-19)
+
+2. **Volatility Clustering**: Periods of high volatility tend to cluster together, suggesting ARCH/GARCH effects
+
+3. **Mean Reversion**: Long-term tendency for prices to revert to historical average, with significant deviations during crisis periods
+
+4. **Asymmetric Response**: Price drops tend to be sharper and faster than subsequent recoveries
 
 ---
 
 ## 4. Assumptions and Limitations
 
 ### 4.1 Assumptions
+
 1. **Data Quality**: Brent oil price data is accurate and reliable
 2. **Event Dating**: Event dates represent the announcement/occurrence timing
 3. **Market Efficiency**: Prices reflect available information with some delay
@@ -134,9 +215,42 @@ We have compiled 18 major events that potentially impacted Brent oil prices betw
 
 ---
 
-## 5. Next Steps
+## 5. Repository Structure
 
-1. **Complete EDA**: Finalize exploratory analysis with detailed visualizations
+```
+week11/
+├── data/
+│   ├── raw/
+│   │   └── BrentOilPrices.csv    # Raw price data (9,011 records)
+│   └── processed/
+│       └── brent_oil_processed.csv  # Processed with derived features
+├── notebooks/
+│   ├── 01_eda.ipynb              # Exploratory analysis notebook
+│   └── 02_change_point_analysis.ipynb  # Bayesian modeling
+├── src/
+│   ├── __init__.py
+│   ├── data_loader.py            # Data loading utilities
+│   └── analysis.py               # Analysis functions
+├── events/
+│   └── major_events.csv          # 18 key events dataset
+├── reports/
+│   ├── interim_report.md         # This report
+│   └── final_report.md           # Final submission
+├── scripts/
+│   ├── download_data.py          # Data preparation
+│   └── run_eda.py                # EDA automation script
+├── docs/
+│   └── analysis_workflow.md      # Workflow documentation
+└── dashboard/
+    ├── backend/                  # Flask API (Task 3)
+    └── frontend/                 # React frontend (Task 3)
+```
+
+---
+
+## 6. Next Steps
+
+1. ~~Complete EDA~~: ✅ Finalized exploratory analysis with detailed statistics
 2. **Implement PyMC Model**: Build and validate Bayesian change point detection
 3. **Run Analysis**: Apply model to multiple time periods around key events
 4. **Quantify Impacts**: Generate probabilistic statements about price changes
@@ -145,36 +259,13 @@ We have compiled 18 major events that potentially impacted Brent oil prices betw
 
 ---
 
-## 6. Repository Structure
-
-```
-week11/
-├── data/
-│   ├── raw/                    # Raw data files
-│   └── processed/              # Processed data
-├── notebooks/
-│   ├── 01_eda.ipynb           # Exploratory analysis
-│   └── 02_change_point_analysis.ipynb
-├── src/
-│   ├── data_loader.py         # Data utilities
-│   └── analysis.py            # Analysis functions
-├── events/
-│   └── major_events.csv       # Events dataset
-├── reports/
-│   ├── interim_report.md      # This report
-│   └── final_report.md        # Final submission
-└── docs/
-    └── analysis_workflow.md   # Workflow documentation
-```
-
----
-
-## References
+## 7. References
 
 1. PyMC Documentation: https://www.pymc.io/
 2. Bayesian Changepoint Detection: https://docs.pymc.io/
 3. Change Point Detection Methods: https://forecastegy.com/posts/change-point-detection-time-series-python/
 4. MCMC Methods: https://towardsdatascience.com/monte-carlo-markov-chain-mcmc-explained-94e3a6c8de11
+5. U.S. Energy Information Administration: https://www.eia.gov/
 
 ---
 

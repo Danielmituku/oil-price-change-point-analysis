@@ -117,8 +117,9 @@ ehthumbs.db
 Thumbs.db
 
 # Project specific
-data/raw/*.csv
-data/processed/*.csv
+# Note: Including actual data files for reproducibility
+# data/raw/*.csv
+# data/processed/*.csv
 *.pkl
 *.pickle
 *.h5

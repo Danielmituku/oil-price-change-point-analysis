@@ -30,8 +30,8 @@ def load_brent_oil_data(filepath: str | Path) -> pd.DataFrame:
     
     df = pd.read_csv(filepath)
     
-    # Convert date column to datetime
-    df['Date'] = pd.to_datetime(df['Date'], format='%d-%b-%y')
+    # Convert date column to datetime (handle mixed formats)
+    df['Date'] = pd.to_datetime(df['Date'], format='mixed', dayfirst=True)
     
     # Sort by date
     df = df.sort_values('Date').reset_index(drop=True)
