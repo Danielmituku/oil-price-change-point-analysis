@@ -1,0 +1,19 @@
+event_id,date,event_name,event_type,description,expected_impact,region
+1,1990-08-02,Gulf War Invasion,Conflict,"Iraq invades Kuwait, triggering the Gulf War and major supply disruptions",Price Increase,Middle East
+2,1997-07-02,Asian Financial Crisis,Economic Crisis,"Asian financial crisis begins, reducing oil demand from emerging economies",Price Decrease,Asia
+3,1999-03-23,OPEC Production Cuts,OPEC Policy,"OPEC agrees to cut production by 2.1 million barrels per day",Price Increase,Global
+4,2001-09-11,September 11 Attacks,Geopolitical,"Terrorist attacks on US lead to economic uncertainty and demand concerns",Price Decrease,North America
+5,2003-03-20,Iraq War Begins,Conflict,"US-led invasion of Iraq creates supply uncertainty in major producing region",Price Increase,Middle East
+6,2008-07-11,Global Financial Crisis Peak,Economic Crisis,"Oil prices reach all-time high of $147 before collapsing due to global recession",Price Decrease,Global
+7,2008-09-15,Lehman Brothers Collapse,Economic Crisis,"Financial system crisis leads to massive demand destruction and price collapse",Price Decrease,Global
+8,2011-02-15,Arab Spring Libya,Conflict,"Libyan civil war begins, removing 1.6 million barrels per day from market",Price Increase,North Africa
+9,2014-06-20,ISIS Captures Mosul,Conflict,"Islamic State captures key Iraqi city, threatening oil infrastructure",Price Increase,Middle East
+10,2014-11-27,OPEC Refuses to Cut,OPEC Policy,"OPEC decides not to cut production despite oversupply, triggering price war",Price Decrease,Global
+11,2015-07-14,Iran Nuclear Deal,Sanctions,"Iran nuclear deal reached, anticipating return of Iranian oil exports",Price Decrease,Middle East
+12,2016-11-30,OPEC Production Agreement,OPEC Policy,"OPEC+ agrees to cut production by 1.2 million barrels per day",Price Increase,Global
+13,2018-05-08,US Withdraws Iran Deal,Sanctions,"US withdraws from Iran nuclear deal and reimposes sanctions",Price Increase,Middle East
+14,2020-03-06,OPEC+ Price War,OPEC Policy,"Saudi-Russia price war begins after failed OPEC+ negotiations",Price Decrease,Global
+15,2020-03-11,COVID-19 Pandemic,Economic Crisis,"WHO declares COVID-19 a pandemic, global lockdowns devastate oil demand",Price Decrease,Global
+16,2020-04-20,Negative Oil Prices,Economic Crisis,"WTI crude futures go negative for the first time in history",Price Decrease,Global
+17,2022-02-24,Russia Ukraine Invasion,Conflict,"Russia invades Ukraine, triggering major sanctions and supply disruptions",Price Increase,Europe
+18,2022-06-02,EU Russian Oil Ban,Sanctions,"EU agrees to ban 90% of Russian oil imports by year end",Price Increase,Europe

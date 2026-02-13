@@ -1,0 +1,46 @@
+# Data Processing and Analysis
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.14.0
+
+# Bayesian Modeling
+pymc>=5.10.0
+arviz>=0.17.0
+pytensor>=2.18.0
+
+# Time Series Analysis
+statsmodels>=0.14.0
+
+# Jupyter
+jupyter>=1.0.0
+jupyterlab>=4.0.0
+notebook>=7.0.0
+ipykernel>=6.25.0
+
+# Flask Backend
+flask>=3.0.0
+flask-cors>=4.0.0
+flask-restful>=0.3.10
+python-dotenv>=1.0.0
+
+# Data Validation
+pydantic>=2.5.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Code Quality
+black>=23.0.0
+flake8>=6.1.0
+isort>=5.12.0
+
+# Utilities
+requests>=2.31.0
+tqdm>=4.66.0
+python-dateutil>=2.8.2
