@@ -1,0 +1,114 @@
+[
+  {
+    "tau_index": 447,
+    "tau_lower": 444,
+    "tau_upper": 451,
+    "change_point_date": "2008-10-13",
+    "ci_lower": "2008-10-08",
+    "ci_upper": "2008-10-17",
+    "mean_before": 89.01,
+    "mean_after": 59.77,
+    "absolute_change": -29.25,
+    "percent_change": -32.86,
+    "probability_increase": 0.0,
+    "period_name": "2008 Financial Crisis",
+    "start_date": "2007-01-01",
+    "end_date": "2009-12-31",
+    "associated_event": {
+      "event_name": "Lehman Brothers Collapse",
+      "event_date": "2008-09-15",
+      "event_type": "Economic Crisis",
+      "days_from_cp": -28,
+      "description": "Financial system crisis leads to massive demand destruction and price collapse"
+    },
+    "convergence": {
+      "r_hat_tau": 1.0,
+      "r_hat_mu1": 1.0,
+      "r_hat_mu2": 1.0
+    }
+  },
+  {
+    "tau_index": 280,
+    "tau_lower": 276,
+    "tau_upper": 296,
+    "change_point_date": "2020-01-31",
+    "ci_lower": "2020-01-27",
+    "ci_upper": "2020-02-24",
+    "mean_before": 64.28,
+    "mean_after": 48.65,
+    "absolute_change": -15.63,
+    "percent_change": -24.32,
+    "probability_increase": 0.0,
+    "period_name": "COVID-19 Pandemic",
+    "start_date": "2019-01-01",
+    "end_date": "2021-06-30",
+    "associated_event": {
+      "event_name": "OPEC+ Price War",
+      "event_date": "2020-03-06",
+      "event_type": "OPEC Policy",
+      "days_from_cp": 35,
+      "description": "Saudi-Russia price war begins after failed OPEC+ negotiations"
+    },
+    "convergence": {
+      "r_hat_tau": 1.02,
+      "r_hat_mu1": 1.01,
+      "r_hat_mu2": 1.0
+    }
+  },
+  {
+    "tau_index": 339,
+    "tau_lower": 336,
+    "tau_upper": 340,
+    "change_point_date": "2014-10-02",
+    "ci_lower": "2014-09-29",
+    "ci_upper": "2014-10-03",
+    "mean_before": 107.51,
+    "mean_after": 52.2,
+    "absolute_change": -55.32,
+    "percent_change": -51.45,
+    "probability_increase": 0.0,
+    "period_name": "2014 OPEC Price War",
+    "start_date": "2013-06-01",
+    "end_date": "2016-06-30",
+    "associated_event": {
+      "event_name": "OPEC Refuses to Cut",
+      "event_date": "2014-11-27",
+      "event_type": "OPEC Policy",
+      "days_from_cp": 56,
+      "description": "OPEC decides not to cut production despite oversupply, triggering price war"
+    },
+    "convergence": {
+      "r_hat_tau": 1.0,
+      "r_hat_mu1": 1.0,
+      "r_hat_mu2": 1.0
+    }
+  },
+  {
+    "tau_index": 160,
+    "tau_lower": 157,
+    "tau_upper": 163,
+    "change_point_date": "2022-01-14",
+    "ci_lower": "2022-01-11",
+    "ci_upper": "2022-01-19",
+    "mean_before": 76.39,
+    "mean_after": 104.73,
+    "absolute_change": 28.34,
+    "percent_change": 37.09,
+    "probability_increase": 1.0,
+    "period_name": "Russia Ukraine War",
+    "start_date": "2021-06-01",
+    "end_date": "2022-11-01",
+    "associated_event": {
+      "event_name": "Russia Ukraine Invasion",
+      "event_date": "2022-02-24",
+      "event_type": "Conflict",
+      "days_from_cp": 41,
+      "description": "Russia invades Ukraine, triggering major sanctions and supply disruptions"
+    },
+    "convergence": {
+      "r_hat_tau": 1.01,
+      "r_hat_mu1": 1.0,
+      "r_hat_mu2": 1.0
+    }
+  }
+]
