@@ -83,7 +83,18 @@ We have compiled 18 major events that potentially impacted Brent oil prices betw
 | **Trading Days** | 12,962 calendar days |
 | **Missing Values** | 0 |
 
-### 3.2 Price Statistics
+### 3.2 Price Time Series with Major Events
+
+The figure below shows the complete Brent oil price series from 1987 to 2022, with vertical lines marking major events color-coded by type (Conflict, OPEC Policy, Economic Crisis, Sanctions, Geopolitical).
+
+![Price Series with Major Events](figures/01_price_series_with_events.png)
+
+**Key Observations:**
+- Clear structural breaks visible around major events
+- Gulf War (1990), 2008 Financial Crisis, 2014 OPEC price war, and COVID-19 (2020) show dramatic price changes
+- Long-term upward trend from ~$20 to $100+ with significant volatility
+
+### 3.3 Price Statistics
 
 | Statistic | Value |
 |-----------|-------|
@@ -94,16 +105,40 @@ We have compiled 18 major events that potentially impacted Brent oil prices betw
 | Maximum Price | $143.95 (July 3, 2008) |
 | Price Range | $134.85 |
 
-**Price Percentiles:**
-- 10th percentile: $16.25
-- 25th percentile: $19.05
-- 50th percentile (Median): $38.57
-- 75th percentile: $70.09
-- 90th percentile: $106.51
-- 95th percentile: $111.91
-- 99th percentile: $124.12
+### 3.4 Price Distribution Analysis
 
-### 3.3 Log Returns Analysis
+![Price Distribution](figures/02_price_distribution.png)
+
+**Key Observations:**
+- Right-skewed distribution with most prices below $60
+- Mean ($48.42) higher than median ($38.57) indicates positive skew
+- Significant evolution across decades: 1980s-1990s concentrated below $30, 2000s-2010s spread to $100+
+
+### 3.5 Yearly Average Prices
+
+![Yearly Average Prices](figures/03_yearly_average_prices.png)
+
+**Key Observations:**
+- Dramatic price increase from 2003-2008 (Iraq War, economic growth)
+- Peak in 2008, 2011-2013 period with prices above $100
+- Sharp decline in 2014-2016 (OPEC price war)
+- COVID-19 impact visible in 2020 low
+
+### 3.6 Rolling Statistics (Mean and Volatility)
+
+![Rolling Statistics](figures/04_rolling_statistics.png)
+
+**Key Observations:**
+- Rolling mean tracks price trends smoothly
+- Volatility spikes correspond to major events
+- 2008 and 2020 show extreme volatility periods
+- Volatility tends to cluster (high volatility followed by high volatility)
+
+### 3.7 Log Returns Analysis
+
+![Log Returns Analysis](figures/05_log_returns_analysis.png)
+
+**Key Statistical Properties:**
 
 | Statistic | Value |
 |-----------|-------|
@@ -112,15 +147,14 @@ We have compiled 18 major events that potentially impacted Brent oil prices betw
 | Annualized Volatility | 40.53% |
 | Skewness | -1.7444 |
 | Kurtosis | 65.9047 |
-| Minimum Daily Return | -64.37% |
-| Maximum Daily Return | +41.20% |
 
 **Key Observations:**
-- **Negative Skewness**: Large negative price shocks are more common than positive ones
-- **Extreme Kurtosis**: Fat tails indicate much higher probability of extreme events than a normal distribution would predict
-- **High Volatility**: Annualized volatility of 40.53% indicates substantial price uncertainty
+- **Negative Skewness**: Large negative price shocks more common than positive ones
+- **Extreme Kurtosis (65.9)**: Fat tails - much higher probability of extreme events than normal distribution
+- **Q-Q Plot**: Clear deviation from normality in tails
+- **Volatility Clustering**: Squared returns show periods of high/low activity
 
-### 3.4 Stationarity Test Results
+### 3.8 Stationarity Test Results
 
 #### Raw Prices (Non-Stationary)
 | Test | Statistic | P-Value | Conclusion |
@@ -136,7 +170,9 @@ We have compiled 18 major events that potentially impacted Brent oil prices betw
 
 **Implication**: Change point models should be applied to log returns or prices within specific time windows for valid statistical inference.
 
-### 3.5 Volatility by Decade
+### 3.9 Volatility by Decade
+
+![Volatility by Decade](figures/06_volatility_by_decade.png)
 
 | Decade | Annualized Volatility |
 |--------|----------------------|
@@ -146,41 +182,31 @@ We have compiled 18 major events that potentially impacted Brent oil prices betw
 | 2010s | 30.31% |
 | 2020s | **75.23%** |
 
-**Key Finding**: The 2020s show dramatically higher volatility (75.23%) due to the COVID-19 pandemic and subsequent market disruptions.
+**Key Finding**: The 2020s show dramatically higher volatility (75.23%) due to the COVID-19 pandemic and subsequent market disruptions - more than double any other decade.
 
-### 3.6 Extreme Price Movements
+### 3.10 COVID-19 Period Analysis (2020)
 
-**Largest Daily Gains:**
-| Date | Return | Price |
-|------|--------|-------|
-| April 22, 2020 | +41.20% | $13.77 |
-| April 2, 2020 | +30.16% | $20.24 |
-| May 5, 2020 | +22.16% | $25.46 |
-| April 3, 2020 | +18.40% | $24.33 |
-| January 2, 2009 | +18.13% | $42.94 |
+![COVID-19 Period Analysis](figures/07_covid_period_analysis.png)
 
-**Largest Daily Losses:**
-| Date | Return | Price |
-|------|--------|-------|
-| April 21, 2020 | **-64.37%** | $9.12 |
-| January 17, 1991 | -36.12% | $21.10 |
-| March 9, 2020 | -25.52% | $35.33 |
-| April 1, 2020 | -24.83% | $14.97 |
-| April 9, 2020 | -22.05% | $20.23 |
+**Extreme Events During COVID-19:**
 
-**Key Finding**: The COVID-19 pandemic period (March-April 2020) dominates both extreme gains and losses, with the single largest loss of -64.37% occurring on April 21, 2020.
+| Date | Event | Impact |
+|------|-------|--------|
+| March 6, 2020 | OPEC+ Price War | -25% weekly |
+| March 11, 2020 | WHO Pandemic Declaration | Continued decline |
+| April 20, 2020 | Negative WTI Prices | Historic low |
+| April 21, 2020 | **Largest Single-Day Drop** | **-64.37%** |
+| April 22, 2020 | **Largest Single-Day Gain** | **+41.20%** |
 
-### 3.7 Visual Observations
+### 3.11 2008 Financial Crisis Analysis
 
-Based on exploratory analysis:
+![2008 Crisis Analysis](figures/08_2008_crisis_analysis.png)
 
-1. **Multiple Structural Breaks**: Clear regime changes visible in 1990 (Gulf War), 2008 (Financial Crisis), 2014 (OPEC price war), and 2020 (COVID-19)
-
-2. **Volatility Clustering**: Periods of high volatility tend to cluster together, suggesting ARCH/GARCH effects
-
-3. **Mean Reversion**: Long-term tendency for prices to revert to historical average, with significant deviations during crisis periods
-
-4. **Asymmetric Response**: Price drops tend to be sharper and faster than subsequent recoveries
+**Key Observations:**
+- Price peaked at $143.95 on July 3, 2008 (all-time high)
+- Lehman Brothers collapse (September 15, 2008) triggered rapid decline
+- Price dropped from ~$140 to ~$34 in 5 months (76% decline)
+- Recovery began in early 2009
 
 ---
 
@@ -235,10 +261,12 @@ week11/
 │   └── major_events.csv          # 18 key events dataset
 ├── reports/
 │   ├── interim_report.md         # This report
+│   ├── figures/                  # EDA visualizations
 │   └── final_report.md           # Final submission
 ├── scripts/
 │   ├── download_data.py          # Data preparation
-│   └── run_eda.py                # EDA automation script
+│   ├── run_eda.py                # EDA statistics
+│   └── generate_eda_plots.py     # Visualization generation
 ├── docs/
 │   └── analysis_workflow.md      # Workflow documentation
 └── dashboard/
@@ -250,7 +278,7 @@ week11/
 
 ## 6. Next Steps
 
-1. ~~Complete EDA~~: ✅ Finalized exploratory analysis with detailed statistics
+1. ~~Complete EDA~~: ✅ Finalized exploratory analysis with visualizations
 2. **Implement PyMC Model**: Build and validate Bayesian change point detection
 3. **Run Analysis**: Apply model to multiple time periods around key events
 4. **Quantify Impacts**: Generate probabilistic statements about price changes
