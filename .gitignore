@@ -148,10 +148,11 @@ dashboard/frontend/.env.production.local
 .temp/
 tmp/
 
-# Reports (keep templates, ignore generated)
-reports/*.pdf
+# Reports (keep templates and submission PDFs)
 !reports/interim_report.md
 !reports/final_report.md
+!reports/interim_report.pdf
+!reports/final_report.pdf
 
 # Large data files
 *.parquet
